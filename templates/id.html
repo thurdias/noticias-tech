@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <title>News details</title>
+  </head>
+  <style>
+    .title{
+      font-family: Roboto;
+      font-size: 35px;
+      font-weight: bold;
+    }
+    a:link{
+      font-family: Roboto;
+      font-size: 21px;
+      color: #9F2B68;
+    }
+    .cabeçalho{
+      font-family: Roboto;
+      font-size: 21px;
+    }
+    .user{
+      font-family: Roboto;
+      font-size: 25px;
+      font-weight: bold; 
+      padding-left: 150px;
+      padding-right: 150px;
+    }
+    p{
+      font-family: Roboto;
+      font-size: 21px;
+      padding-left: 150px;
+      padding-right: 150px;
+    }
+    .meio{
+      margin: auto; 
+      width: 50%;      
+      text-align: center;
+    }
+  </style>
+  <body>
+    <div class="meio">   
+      <h1 class="title">{{title}}</h1>
+      <a class="cabeçalho">{{points}} points | By: {{author}} | </a><a href="{{url}}">{{url}}</a>
+    </div>
+       <hr>
+      {% for comments in comment %}
+    <br>
+      {% if comments.author == "[deleted]" %}
+      <a class="user">{{comments.author}}</a><br><br>
+      {% else %}
+      <a class="user">{{comments.author}}:</a><br><br>
+      {{comments.comentario|safe}}
+      {% endif %}
+    <hr>
+      {% endfor %}
+  </body>
+</html>
