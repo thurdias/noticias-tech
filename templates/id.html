@@ -1,35 +1,33 @@
 <!DOCTYPE html>
 <html lang="pt-br">
   <head>
-    <title>News details</title>
+    <title>Tech News</title>
   </head>
   <style>
-    .title{
+    .titulo{
       font-family: Roboto;
-      font-size: 35px;
-      font-weight: bold;
+      font-size: 45px;
+      color: #301934;
     }
-    a:link{
+    a{
       font-family: Roboto;
-      font-size: 21px;
-      color: #9F2B68;
+      font-size: 20px;
     }
-    .cabeçalho{
-      font-family: Roboto;
-      font-size: 21px;
-    }
-    .user{
+     .select{
+     background: none;
+      border: none;
+      padding: 0; 
       font-family: Roboto;
       font-size: 25px;
-      font-weight: bold; 
-      padding-left: 150px;
-      padding-right: 150px;
+      text-decoration: underline;
+      cursor: pointer;
+      font-weight: bold;
+      color:#9F2B68;
     }
-    p{
-      font-family: Roboto;
-      font-size: 21px;
-      padding-left: 150px;
-      padding-right: 150px;
+    .a2{
+    font-family: Roboto;
+    font-size: 22px;
+    color:#4B0082;
     }
     .meio{
       margin: auto; 
@@ -38,29 +36,47 @@
     }
     .assinatura{
       margin: auto; 
-      font-family: Roboto; 
+      font-family: Roboto;
       width: 100%;      
       text-align: right;
-      font-weight: normal;
+    }
+    .materia {
+      background: none;
+      border: none;
+      padding: 0; 
+      font-family: Roboto;
+      font-size: 25px;
+      color:#4B0082;
+      text-decoration: underline;
+      cursor: pointer;
+      font-weight: bold;
     }
   </style>
   <body>
-    <img style="float:left" src="https://imagensemoldes.com.br/wp-content/uploads/2021/04/Figura-Puss-in-Boots-PNG-897x1024.png" width="110" height="130">
-    <h4 class="assinatura">Site feito por: Arthur Dias Bouças</h4>
-    <div class="meio">   
-      <h1 class="title">{{title}}</h1>
-      <a class="cabeçalho">{{points}} points | By: {{author}} | </a><a href="{{url}}">{{url}}</a>
-    </div>
-       <hr>
-      {% for comments in comment %}
-    <br>
-      {% if comments.author == "[deleted]" %}
-      <a class="user">{{comments.author}}</a><br><br>
-      {% else %}
-      <a class="user">{{comments.author}}:</a><br><br>
-      {{comments.comentario|safe}}
-      {% endif %}
-    <hr>
-      {% endfor %}
+    <img style="float:left" src="https://imagensemoldes.com.br/wp-content/uploads/2021/04/Figura-Puss-in-Boots-PNG-897x1024.png" width="130" height="150">
+    <p class="assinatura">Site feito por: Arthur Dias Bouças</p>
+      <div class="meio">
+      <b><h1 class="titulo" style="float:middle">Tech News</h1></b>
+      <a>Ordene por: </a>
+      <form action="/" method="get">
+     <button type="submit" class="select" name="order_by" value="popular">Popular</button>
+      <b><a> | </a></b>
+     <button type="submit" class="select" name="order_by" value="new">New</button>
+      </form>
+      </div>
+        <br>
+        <center>
+      <hr>
+        {% for new in news %}
+          <br> 
+        <form action="/{{new.id}}" method="post">
+        <button class="materia" type="submit" name="enviar" value="{{new}}">{{new.title}}</button>
+        </form>
+        <a class="a2" href="{{new.url}}" target="_blank">({{new.url}})</a><br> 
+        <a>{{new.points}} points | By:{{new.author}} | {{new.num_comments}} comentários</a> 
+          <br><br>
+      <hr>
+        {% endfor %} 
+      </center>
   </body>
 </html>
