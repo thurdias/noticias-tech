@@ -1,4 +1,4 @@
-# noticias tech
+# TechNews
 ## API que interage com site e retorna notícias da área de tecnologia/ciência
 ### A aplicação é capaz de visualizar as notícias mais populares e as mais novas
 ### Como também, é possível visualizar o título, comentário, quantidade de comentários, autor, comentários da matéria e os pontos(engajamento da matéria)
