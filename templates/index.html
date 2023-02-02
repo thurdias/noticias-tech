@@ -21,14 +21,7 @@
       font-size: 25px;
       text-decoration: underline;
       cursor: pointer;
-      font-weight: bold;
       color:#9F2B68;
-    }
-      .assinatura{
-      margin: auto; 
-      font-family: Roboto;
-      width: 100%;      
-      text-align: right;
     }
     .a2{
     font-family: Roboto;
@@ -39,6 +32,12 @@
       margin: auto; 
       width: 50%;      
       text-align: center;
+    }
+    .assinatura{
+      margin: auto; 
+      font-family: Roboto;
+      width: 100%;      
+      text-align: right;
     }
     .materia {
       background: none;
@@ -59,9 +58,15 @@
       <b><h1 class="titulo" style="float:middle">Tech News</h1></b>
       <a>Ordene por: </a>
       <form action="/" method="get">
+        {% if order_by == "new"%}
      <button type="submit" class="select" name="order_by" value="popular">Popular</button>
       <b><a> | </a></b>
+     <button type="submit" class="select" name="order_by" value="new"><b>New</b></button>
+        {%else%}
+     <button type="submit" class="select" name="order_by" value="popular"><b>Popular</b></button>
+      <b><a> | </a></b>
      <button type="submit" class="select" name="order_by" value="new">New</button>
+        {%endif%}
       </form>
       </div>
         <br>
